@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<table id="list">
+  <thead>
+    <tr>
+      <th>Ticker</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% stocks.forEach(function(m) { %>
+      <tr>
+        <td><%= m.ticker %></td>
+        <td><%= m.price %></td>
+        
+      </tr>
+      <% }); %>
+    </tbody>
+
+  </table>
+  
+  <%- include('../partials/footer') %>
