@@ -1,8 +1,8 @@
 var router = require("express").Router();
-var stocksCtrl = require("../controllers/stocks");
+var usersCtrl = require("../controllers/users");
 
-// GET /stocks
-router.get("/stocks", stocksCtrl.index);
+// GET /users
+router.get("/users", usersCtrl.index);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

@@ -1,11 +1,9 @@
-var Stock = require('../model/stock');
+var Stock = require("../model/stock");
 
-module.exports= {
-    index,
-}
+module.exports = {
+  index
+};
 
-function index(req, res) {
-    Stock.find({}, function(err, stock) {
-    res.render('/stocks/index', {title: 'All Stocks'}, stocks)
-    })
+function index(req, res, next) {
+  res.render("/index", { user: req.user });
 }

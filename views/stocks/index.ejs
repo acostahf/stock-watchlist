@@ -8,14 +8,12 @@
   </thead>
   <tbody>
     <% stocks.forEach(function(m) { %>
-      <tr>
-        <td><%= m.ticker %></td>
-        <td><%= m.price %></td>
-        
-      </tr>
-      <% }); %>
-    </tbody>
+    <tr>
+      <td><%= m.ticker %></td>
+      <td><%= m.price %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
 
-  </table>
-  
-  <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

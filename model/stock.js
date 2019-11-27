@@ -1,11 +1,13 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require("mongoose");
 
-var stockSchema = new Schema({
+var stockSchema = new mongoose.Schema(
+  {
     ticker: String,
     price: Number,
-}) 
-
-
-
-module.exports = mongoose.model('Stock', stockSchema);
+    googleId: String
+  },
+  {
+    timestamps: true
+  }
+);
+module.exports = mongoose.model("Stock", stockSchema);
