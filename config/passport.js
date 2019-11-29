@@ -21,6 +21,7 @@ passport.use(
             email: profile.emails[0].value,
             googleId: profile._id
           });
+          console.log(name);
           newUser.save(function(err) {
             if (err) return cb(err);
             return cb(null, newUser);

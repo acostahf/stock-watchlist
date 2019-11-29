@@ -4,7 +4,8 @@ var stockSchema = new mongoose.Schema(
   {
     ticker: String,
     price: Number,
-    googleId: String
+    buy: Number,
+    Sell: Number
   },
   {
     timestamps: true

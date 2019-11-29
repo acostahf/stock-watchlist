@@ -2,7 +2,7 @@ var router = require("express").Router();
 var stocksCtrl = require("../controllers/stocks");
 
 // GET /stocks
-router.get("/stocks", stocksCtrl.index);
+router.get("/", stocksCtrl.index);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
