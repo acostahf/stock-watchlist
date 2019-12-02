@@ -8,7 +8,7 @@ var session = require("express-session");
 var passport = require("passport");
 // var methodOverride = require("method-override");
 
-// var apiRoutes = require("./routes/api");
+var apiRoutes = require("./routes/api");
 
 // load the env vars
 require("dotenv").config();
@@ -47,7 +47,7 @@ app.use(passport.session());
 app.use("/", indexRouter);
 app.use("/stocks", stocksRouter);
 app.use("/", usersRoutes);
-// app.use("/api", apiRoutes);
+app.use("/api", apiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
