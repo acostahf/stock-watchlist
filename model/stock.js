@@ -1,11 +1,12 @@
 var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
-var stockSchema = new mongoose.Schema(
+var stockSchema = new Schema(
   {
     ticker: String,
     price: Number,
     buy: Number,
-    Sell: Number
+    sell: Number
   },
   {
     timestamps: true

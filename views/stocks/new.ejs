@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/stocks" method="POST">
+  <label>ticker:</label><br />
+  <input type="text" name="ticker" /><br />
+  <label>price:</label><br />
+  <input type="number" name="price" /><br />
+  <label>buy:</label><br />
+  <input type="number" name="buy" /><br />
+  <label>sell:</label><br />
+  <input type="number" name="sell" /><br />
+  <input type="submit" value="Add Stock" />
+</form>
+<%- include('../partials/footer') %>

@@ -1,26 +1,35 @@
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
-var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var cookieParser = require("cookie-parser");
+//session middleware
 var session = require("express-session");
 var passport = require("passport");
+// var methodOverride = require("method-override");
+
+// var apiRoutes = require("./routes/api");
+
+// load the env vars
+require("dotenv").config();
+
+// create the Express app
+var app = express();
+
+// connect to the MongoDB with mongoose
+require("./config/database");
+// configure Passport
+require("./config/passport");
 
 var indexRouter = require("./routes/index");
 var stocksRouter = require("./routes/stocks");
 var usersRoutes = require("./routes/users");
-
-require("dotenv").config();
-
-var app = express();
-
-require("./config/database");
-require("./config/passport");
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,11 +43,11 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/stocks", stocksRouter);
 app.use("/", usersRoutes);
+// app.use("/api", apiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

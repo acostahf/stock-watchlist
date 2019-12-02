@@ -8,3 +8,13 @@
     <li>num 4</li>
   </ul>
 </form>
+<main>
+  <h1><%= title %></h1>
+  <% if (user) { %>
+  <a href="/logout"><i class="material-icons left"></i>Log Out</a>
+  <% } else { %>
+  <a href="/auth/google"
+    ><i class="material-icons left"></i>Login with Google</a
+  >
+  <% } %>
+</main>

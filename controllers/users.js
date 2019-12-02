@@ -5,12 +5,8 @@ module.exports = {
 };
 
 function index(req, res, next) {
-  let sortKey = req.query.sort || "name";
   res.render("users/index", {
     title: "User page",
-    user: req.user,
-    name: req.query.name,
-    sortKey
+    user: req.user
   });
-  console.log(sortKey);
 }
