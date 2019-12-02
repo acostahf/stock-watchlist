@@ -10,7 +10,7 @@ module.exports = {
 
 function deleteOne(req, res) {
   Stock.findByIdAndDelete(req.params.id, function(err, stock) {
-    res.status(200).json(stock);
+    res.redirect("/stocks");
   });
 }
 

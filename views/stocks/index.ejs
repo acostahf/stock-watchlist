@@ -11,12 +11,21 @@
   <tbody>
     <% stocks.forEach(function(m) { %>
     <tr>
-      <td><%= m.ticker %></td>
+      <td><%= m.symbol %></td>
       <td><%= m.price %></td>
       <td><%= m.buy %></td>
       <td><%= m.sell %></td>
-      <td><button action="delete/<%= m._id%>">X</button></td>
       <td><a href="/stocks/<%= m._id %>">DETAILS</a></td>
+
+      <td>
+        <form
+          action="api/stocks/<%= m._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <button type="submit">X</button>
+        </form>
+      </td>
     </tr>
     <% }); %>
   </tbody>

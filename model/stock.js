@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var stockSchema = new Schema(
   {
-    ticker: String,
+    symbol: String,
     price: Number,
     buy: Number,
     sell: Number

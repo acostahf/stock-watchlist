@@ -1,12 +1,24 @@
 <%- include('../partials/header') %>
 <h2>Stock Details</h2>
-<section id="show-page">
-  <div>ticker:</div>
-  <div><%= stock.ticker %></div>
-  <div>Price:</div>
-  <div><%= stock.price %></div>
-  <div>Buy:</div>
-  <div><%= stock.buy %></div>
-  <div>Sell:</div>
-  <div><%= stock.sell %></div>
-</section>
+<tbody>
+  <tr>
+    <td>symbol:</td>
+    <td><%= stock.symbol %></td>
+    <br />
+    <td>price:</td>
+    <td><%= stock.price %></td>
+    <br />
+    <td>buy:</td>
+    <td><%= stock.buy %></td>
+    <td>
+      <input type="text" method="PUT" />
+    </td>
+    <br />
+    <td>sell:</td>
+    <td><%= stock.sell %></td>
+    <br />
+    <td>
+      <input type="submit" value="update" />
+    </td>
+  </tr>
+</tbody>

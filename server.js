@@ -6,7 +6,7 @@ var cookieParser = require("cookie-parser");
 //session middleware
 var session = require("express-session");
 var passport = require("passport");
-// var methodOverride = require("method-override");
+var methodOverride = require("method-override");
 
 var apiRoutes = require("./routes/api");
 
@@ -28,7 +28,7 @@ var usersRoutes = require("./routes/users");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// app.use(methodOverride("_method"));
+app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(logger("dev"));
 app.use(express.json());
