@@ -31,19 +31,4 @@
   </tbody>
 </table>
 
-<div class="row">
-  <div id="users" class="col s12">
-    <% users.forEach(function(user) { %>
-    <div class="card blue-grey">
-      <ul class="collection">
-        <% user.stocks.forEach(function(sotkc) { %>
-        <li class="collection-item blue-grey-text text-darken-2">
-          <%- stock.symbol %>
-        </li>
-        <% }) %>
-      </ul>
-    </div>
-  </div>
-  <% }) %>
-</div>
 <%- include('../partials/footer') %>
