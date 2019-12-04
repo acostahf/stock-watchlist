@@ -27,6 +27,6 @@ h1 {
 
 form {
   display: flex;
-  background-color: grey;
+  /* background-color: grey; */
   justify-content: center;
 }
