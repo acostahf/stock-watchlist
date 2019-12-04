@@ -2,45 +2,44 @@ const User = require("../model/user");
 
 module.exports = {
   index,
-  new: newStock,
-  create,
-  show
+  delStock,
+  addStock
 };
 
-//stock has to match with the show stock. ect.
-function show(req, res) {
-  Stock.findById(req.params.id, function(err, stock) {
-    res.render("stocks/show", { title: "stock Detail", user: "d", stock });
-  });
-}
-
-function create(req, res) {
-  for (let key in req.body) {
-    if (req.body[key] === "") delete req.body[key];
-  }
-  let stock = new Stock(req.body);
-  req.stock.user.push(stock._id);
-  stock.save(function(err) {
-    if (err) return res.send(err);
-
-    res.redirect(`/users`);
-  });
-}
-
-function newStock(req, res) {
-  User.findById(req.params.id, function(err, stock) {
-    res.render("users/new", { title: "Add stocks", user: "d", stock });
-  });
-}
-
 function index(req, res, next) {
-  User.findById(req.user._id)
-    .populate("stocks")
-    .exec(function(err, user) {
-      res.render("users", {
-        title: "User page",
+  console.log(req.query);
+  // Make the query object to use with Student.find based up
+  // the user has submitted the search form or now
+  let modelQuery = req.query.name
+    ? { name: new RegExp(req.query.name, "i") }
+    : {};
+  // Default to sorting by name
+  let sortKey = req.query.sort || "name";
+  User.find(modelQuery)
+    .sort(sortKey)
+    .exec(function(err, users) {
+      if (err) return next(err);
+      // Passing search values, name & sortKey, for use in the EJS
+      res.render("users/index", {
+        users,
         user: req.user,
-        stocks: user.stock
+        name: req.query.name,
+        sortKey
       });
     });
+}
+
+function addStock(req, res, next) {
+  req.user.stocks.push(req.body);
+  req.user.save(function(err) {
+    res.redirect("/users");
+  });
+}
+function delStock(req, res, next) {
+  User.findOne({ "stock._id": req.params.id }, function(err, user) {
+    user.stocks.id(req.params.id).remove();
+    user.save(function(err) {
+      res.redirect("/users");
+    });
+  });
 }

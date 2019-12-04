@@ -3,9 +3,10 @@ var usersCtrl = require("../controllers/users");
 
 // GET /users
 router.get("/users", isLoggedIn, usersCtrl.index);
-router.get("/users/new", usersCtrl.new);
-router.post("/", usersCtrl.create);
-router.get("/:id", usersCtrl.show);
+//Post stocks
+router.post("/stocks", isLoggedIn, usersCtrl.addStock);
+
+router.delete("/stock/:id", isLoggedIn, usersCtrl.delStock);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

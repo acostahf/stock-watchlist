@@ -1,4 +1,3 @@
-var express = require("express");
 var router = require("express").Router();
 var passport = require("passport");
 
@@ -25,7 +24,7 @@ router.get(
 // OAuth logout route
 router.get("/logout", function(req, res) {
   req.logout();
-  res.redirect("/users");
+  res.redirect("/");
 });
 
 module.exports = router;

@@ -9,17 +9,17 @@
     </tr>
   </thead>
   <tbody>
-    <% stocks.forEach(function(m) { %>
+    <% users.forEach(function(user) { %>
     <tr>
-      <td><%= m.symbol %></td>
-      <td><%= m.price %></td>
-      <td><%= m.buy %></td>
-      <td><%= m.sell %></td>
-      <td><a href="/stocks/<%= m._id %>">DETAILS</a></td>
+      <td><%= user.symbol %></td>
+      <td><%= user.price %></td>
+      <td><%= user.buy %></td>
+      <td><%= user.sell %></td>
+      <td><a href="/users/<%= user._id %>">DETAILS</a></td>
 
       <td>
         <form
-          action="stocks/<%= m._id %>?_method=DELETE"
+          action="users/<%= user._id %>?_method=DELETE"
           class="delete-form"
           method="POST"
         >
@@ -31,4 +31,19 @@
   </tbody>
 </table>
 
+<div class="row">
+  <div id="users" class="col s12">
+    <% users.forEach(function(user) { %>
+    <div class="card blue-grey">
+      <ul class="collection">
+        <% user.stocks.forEach(function(sotkc) { %>
+        <li class="collection-item blue-grey-text text-darken-2">
+          <%- stock.symbol %>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+  <% }) %>
+</div>
 <%- include('../partials/footer') %>
