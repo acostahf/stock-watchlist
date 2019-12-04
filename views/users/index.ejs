@@ -8,21 +8,24 @@
       <th>sell</th>
     </tr>
   </thead>
+  <form d="add-stock-form" method="POST" action="/stocks">
+    <input type="text" name="symbol" placeholder="symbol" />
+    <input type="number" name="price" placeholder="price" />
+    <input type="number" name="buy" placeholder="buy" />
+    <input type="number" name="sell" placeholder="sell" />
+    <input type="submit" value="Add Stock" />
+  </form>
   <tbody>
-    <% users.forEach(function(user) { %>
+    <% user.stocks.forEach(function(u) { %>
     <tr>
-      <td><%= user.symbol %></td>
-      <td><%= user.price %></td>
-      <td><%= user.buy %></td>
-      <td><%= user.sell %></td>
-      <td><a href="/users/<%= user._id %>">DETAILS</a></td>
+      <td><%= u.symbol %></td>
+      <td><%= u.price %></td>
+      <td><%= u.buy %></td>
+      <td><%= u.sell %></td>
+      <td><a href="">DETAILS</a></td>
 
       <td>
-        <form
-          action="users/<%= user._id %>?_method=DELETE"
-          class="delete-form"
-          method="POST"
-        >
+        <form action="" class="delete-form" method="POST">
           <button type="submit">X</button>
         </form>
       </td>

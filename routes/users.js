@@ -2,11 +2,11 @@ var router = require("express").Router();
 var usersCtrl = require("../controllers/users");
 
 // GET /users
-router.get("/users", isLoggedIn, usersCtrl.index);
+router.get("/users", usersCtrl.index);
 //Post stocks
 router.post("/stocks", isLoggedIn, usersCtrl.addStock);
 
-router.delete("/stock/:id", isLoggedIn, usersCtrl.delStock);
+router.delete("stock/:id", usersCtrl.delStock);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

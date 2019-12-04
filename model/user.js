@@ -17,7 +17,7 @@ var userSchema = new Schema(
   {
     name: String,
     email: String,
-    stock: [stockSchema],
+    stocks: [stockSchema],
     googleId: String
   },
   {
