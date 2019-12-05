@@ -2,7 +2,7 @@ var router = require("express").Router();
 var tradersCtrl = require("../controllers/traders");
 
 // GET /traders
-router.get("/traders", tradersCtrl.index);
+router.get("/traders", isLoggedIn, tradersCtrl.index);
 //Post stocks
 router.post("/stocks", isLoggedIn, tradersCtrl.addStock);
 router.delete("/stocks/:id", isLoggedIn, tradersCtrl.delStock);

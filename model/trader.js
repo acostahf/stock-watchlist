@@ -26,7 +26,7 @@ var traderSchema = new Schema(
     name: String,
     email: String,
     stocks: [stockSchema],
-    profit: [profitSchema],
+    profits: [profitSchema],
     googleId: String
   },
   {

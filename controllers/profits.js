@@ -6,9 +6,24 @@ module.exports = {
 
 };
 function index(req, res, next) {
-    res.render("profits/index", {
-        user: req.body
-    });
+    let modelQuery = req.query.name
+        ? { name: new RegExp(req.query.name, "i") }
+        : {};
+    // Default to sorting by name
+    let sortKey = req.query.sort || "name";
+    Trader.find(modelQuery)
+        .sort(sortKey)
+        .exec(function (err, traders) {
+            if (err) return next(err);
+            console.log('this is traders : ', traders)
+            // Passing search values, name & sortKey, for use in the EJS
+            res.render("profits/index", {
+                traders,
+                user: req.user,
+                name: req.query.name,
+                sortKey
+            });
+        });
 }
 
 function create(req, res, next) {
@@ -18,6 +33,6 @@ function create(req, res, next) {
 
     req.user.profits.push(req.body);
     req.user.save(function (err) {
-        res.redirect("/traders");
+        res.redirect("/profits");
     });
 }
