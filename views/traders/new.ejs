@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+<title><%= title %></title>
+<table>
+    <tbody>
+        <td>
+            <form d="add-profit-form" method="POST" action="/profits">
+
+                <input type="number" name="sell" placeholder="profits" />
+                <input type="submit" value="Add profit" />
+            </form>
+        </td>
+    </tbody>
+</table>
+<tbody>
+    <% traders.forEach(function(trader) { %>
+    <% trader.profits.forEach(function(p) { %>
+    <tr>
+        <td><%= p.profits %></td>
+
+
+        <td>
+            <% if (trader._id.equals(user && user._id)) { %>
+            <form action="/stocks/<%= u._id %>?_method=DELETE" method="POST" class="secondary-content">
+                <button type="submit">X</button>
+            </form>
+            <% } %>
+
+            </form>
+        </td>
+    </tr>
+    <% }); %>
+    <% }); %>
+</tbody>
+</table>

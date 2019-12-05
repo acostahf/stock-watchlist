@@ -2,10 +2,12 @@ const Trader = require("../model/trader");
 
 module.exports = {
   index,
-  // delStock,
   addStock,
-  delStock
+  delStock,
+  // show
+
 };
+
 
 function index(req, res, next) {
   console.log(req.query);
@@ -31,6 +33,9 @@ function index(req, res, next) {
 }
 
 function addStock(req, res, next) {
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  }
   req.user.stocks.push(req.body);
   req.user.save(function (err) {
     res.redirect("/traders");
@@ -45,9 +50,12 @@ function delStock(req, res, next) {
     });
   });
 }
-// function deleteOne(req, res) {
-//   Trader.findByIdAndDelete(req.parms.id, function (err, stock) {
-//     console.log(stock)
-//     res.redirect("/traders");
-//   });
+
+// function show(req, res, next) {
+//   Trader.findById(req.params.id)
+//   res.render('traders/show'), {
+//     traders,
+//     profits
+//   }
+
 // }

@@ -1,6 +1,14 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
+var profitSchema = new Schema(
+  {
+    profits: { type: Number, default: 0 },
+    week: { type: String, default: 'week 1' },
+
+  }
+)
+
 var stockSchema = new Schema(
   {
     symbol: { type: String, default: 'BA' },
@@ -18,6 +26,7 @@ var traderSchema = new Schema(
     name: String,
     email: String,
     stocks: [stockSchema],
+    profit: [profitSchema],
     googleId: String
   },
   {
