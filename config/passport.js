@@ -1,6 +1,6 @@
 var passport = require("passport");
 var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-var User = require("../model/user");
+var Trader = require("../model/trader");
 
 passport.use(
   new GoogleStrategy(
@@ -9,22 +9,29 @@ passport.use(
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: process.env.GOOGLE_CALLBACK
     },
-    function(accessToken, refreshToken, profile, cb) {
-      User.findOne({ googleId: profile._id }, function(err, user) {
+    function (accessToken, refreshToken, profile, cb) {
+      // a user has logged in via OAuth!
+      Trader.findOne({ 'googleId': profile.id }, function (err, trader) {
         if (err) return cb(err);
-        if (user) {
-          return cb(null, user);
+        if (trader) {
+          if (!trader.avatar) {
+            trader.avatar = profile.photos[0].value;
+            trader.save(function (err) {
+              return cb(null, trader);
+            });
+          } else {
+            return cb(null, trader);
+          }
         } else {
-          // we have a new user via OAuth!
-          var newUser = new User({
+          // we have a new trader via OAuth!
+          var newTrader = new Trader({
             name: profile.displayName,
             email: profile.emails[0].value,
-            googleId: profile._id
+            googleId: profile.id
           });
-          console.log(name);
-          newUser.save(function(err) {
+          newTrader.save(function (err) {
             if (err) return cb(err);
-            return cb(null, newUser);
+            return cb(null, newTrader);
           });
         }
       });
@@ -32,12 +39,12 @@ passport.use(
   )
 );
 
-passport.serializeUser(function(user, done) {
-  done(null, user._id);
+passport.serializeUser(function (trader, done) {
+  done(null, trader.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
+passport.deserializeUser(function (id, done) {
+  Trader.findById(id, function (err, trader) {
+    done(err, trader);
   });
 });

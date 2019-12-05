@@ -16,7 +16,8 @@
     <input type="submit" value="Add Stock" />
   </form>
   <tbody>
-    <% user.stocks.forEach(function(u) { %>
+    <% traders.forEach(function(trader) { %>
+    <% trader.stocks.forEach(function(u) { %>
     <tr>
       <td><%= u.symbol %></td>
       <td><%= u.price %></td>
@@ -25,11 +26,16 @@
       <td><a href="">DETAILS</a></td>
 
       <td>
-        <form action="" class="delete-form" method="POST">
+        <% if (trader._id.equals(user && user._id)) { %>
+        <form action="/stocks/<%= u._id %>?_method=DELETE" method="POST" class="secondary-content">
           <button type="submit">X</button>
+        </form>
+        <% } %>
+
         </form>
       </td>
     </tr>
+    <% }); %>
     <% }); %>
   </tbody>
 </table>

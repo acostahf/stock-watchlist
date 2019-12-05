@@ -1,9 +1,10 @@
-const User = require("../model/user");
+const Trader = require("../model/trader");
 
 module.exports = {
   index,
-  delStock,
-  addStock
+  // delStock,
+  addStock,
+  delStock
 };
 
 function index(req, res, next) {
@@ -15,13 +16,13 @@ function index(req, res, next) {
     : {};
   // Default to sorting by name
   let sortKey = req.query.sort || "name";
-  User.find(modelQuery)
+  Trader.find(modelQuery)
     .sort(sortKey)
-    .exec(function(err, users) {
+    .exec(function (err, traders) {
       if (err) return next(err);
       // Passing search values, name & sortKey, for use in the EJS
-      res.render("users/index", {
-        users,
+      res.render("traders/index", {
+        traders,
         user: req.user,
         name: req.query.name,
         sortKey
@@ -31,15 +32,22 @@ function index(req, res, next) {
 
 function addStock(req, res, next) {
   req.user.stocks.push(req.body);
-  req.user.save(function(err) {
-    res.redirect("/users");
+  req.user.save(function (err) {
+    res.redirect("/traders");
   });
 }
 function delStock(req, res, next) {
-  User.findOne({ "stock._id": req.params.id }, function(err, user) {
-    user.stocks.id(req.params.id).remove();
-    user.save(function(err) {
-      res.redirect("/users");
+  Trader.findOne({ 'stocks._id': req.params.id }, function (err, trader) {
+    trader.stocks.id(req.params.id).remove();
+    trader.save(function (err) {
+      res.redirect("/traders");
+
     });
   });
 }
+// function deleteOne(req, res) {
+//   Trader.findByIdAndDelete(req.parms.id, function (err, stock) {
+//     console.log(stock)
+//     res.redirect("/traders");
+//   });
+// }

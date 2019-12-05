@@ -3,17 +3,17 @@ var Schema = mongoose.Schema;
 
 var stockSchema = new Schema(
   {
-    symbol: String,
-    price: Number,
-    buy: Number,
-    sell: Number
+    symbol: { type: String, default: 'BA' },
+    price: { type: Number, default: 5 },
+    buy: { type: Number, default: 5 },
+    sell: { type: Number, default: 5 },
   },
   {
     timestamps: true
   }
 );
 
-var userSchema = new Schema(
+var traderSchema = new Schema(
   {
     name: String,
     email: String,
@@ -24,4 +24,4 @@ var userSchema = new Schema(
     timestamps: true
   }
 );
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Trader", traderSchema);
