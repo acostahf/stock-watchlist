@@ -22,6 +22,7 @@ require("./config/passport");
 var indexRouter = require("./routes/index");
 var tradersRoutes = require("./routes/traders");
 var profitsRoutes = require("./routes/profits");
+var commentsRoutes = require("./routes/comments");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -45,6 +46,7 @@ app.use(passport.session());
 app.use("/", indexRouter);
 app.use("/", tradersRoutes);
 app.use("/", profitsRoutes);
+app.use("/", commentsRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

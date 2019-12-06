@@ -38,6 +38,7 @@
     <% }); %>
     <% }); %>
   </tbody>
-</table>
-
-<%- include('../partials/footer') %>
+  <% traders.forEach(function(t) { %>
+  <h1><%=t.symbol%></h1>
+  <% }); %>
+  <%- include('../partials/footer') %>

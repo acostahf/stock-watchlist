@@ -3,7 +3,8 @@ var Trader = require('../model/trader');
 module.exports = {
     index,
     create,
-    delProfits
+    delProfits,
+    show
 
 };
 function index(req, res, next) {
@@ -39,10 +40,14 @@ function create(req, res, next) {
 }
 function delProfits(req, res, next) {
     Trader.findOne({ 'profits._id': req.params.id }, function (err, trader) {
+        console.log('fire')
         trader.profits.id(req.params.id).remove();
         trader.save(function (err) {
             res.redirect("/profits");
 
         });
     });
+}
+function show(req, res) {
+    res.redirect('/profits')
 }
