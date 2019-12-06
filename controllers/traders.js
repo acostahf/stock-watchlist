@@ -4,10 +4,10 @@ module.exports = {
   index,
   addStock,
   delStock,
-  show
+  show,
+  update
 
 };
-
 
 function index(req, res, next) {
   console.log(req.query);
@@ -52,12 +52,9 @@ function delStock(req, res, next) {
 }
 
 function show(req, res) {
-  let modelQuery = req.query.name
-    ? { name: new RegExp(req.query.name, "i") }
-    : {};
-  // Default to sorting by name
+
   let sortKey = req.query.sort || "name";
-  Trader.find(modelQuery)
+  Trader.find({ name: req.user.name })
     .sort(sortKey)
     .exec(function (err, traders) {
       if (err) return next(err);
@@ -70,4 +67,14 @@ function show(req, res) {
         });
       })
     })
+}
+
+
+function update(req, res, next) {
+  let traderStock = Trader.stocks
+  traderStock.findById(req.params.id, function (err, stoc) {
+    res.redirect('/traders/show', {
+
+    })
+  })
 }

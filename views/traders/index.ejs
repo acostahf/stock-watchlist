@@ -25,16 +25,17 @@
       <td><%= u.price %></td>
       <td><%= u.buy %></td>
       <td><%= u.sell %></td>
-      <td><a href="/traders/<%= u._id %>/stocks">DETAILS</a></td>
 
       <td>
-        <% if (trader._id.equals(user && user._id)) { %>
-        <form action="/stocks/<%= u._id %>?_method=DELETE" method="POST" class="secondary-content">
-          <button type="submit">X</button>
-        </form>
-        <% } %>
+        <a>
+          <% if (trader._id.equals(user && user._id)) { %>
+          <a href="/traders/<%= u._id %>/stocks">My stocks</a>
+          <form action="/stocks/<%= u._id %>?_method=DELETE" method="POST" class="secondary-content">
+            <button type="submit">X</button>
+          </form>
+          <% } %>
 
-        </form>
+          </form>
       </td>
     </tr>
     <% }); %>

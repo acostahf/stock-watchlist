@@ -1,6 +1,8 @@
 # Stock Watchlist
+<a href="https://stockwatchlistapp.herokuapp.com/traders"></a>
 
 ## Purpose
+This app is to create a watchlist that traders can add to everyday as a group watchlist. 
 
 ## User stories
 

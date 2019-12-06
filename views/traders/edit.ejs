@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+
+<form d="add-stock-form" method="POST" action="/stocks">
+    <input type="text" name="symbol" placeholder="symbol" />
+    <input type="number" name="price" placeholder="price" />
+    <input type="number" name="buy" placeholder="buy" />
+    <input type="number" name="sell" placeholder="sell" />
+    <input type="submit" value="Add Stock" />
+</form>

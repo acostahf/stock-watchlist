@@ -8,13 +8,6 @@
       <th>sell</th>
     </tr>
   </thead>
-  <form d="update-stock-form" method="POST" action="/stocks">
-    <input type="text" name="symbol" placeholder="symbol" />
-    <input type="number" name="price" placeholder="price" />
-    <input type="number" name="buy" placeholder="buy" />
-    <input type="number" name="sell" placeholder="sell" />
-    <input type="submit" value="update" />
-  </form>
   <tbody>
     <% traders.forEach(function(trader) { %>
     <% trader.stocks.forEach(function(stock) { %>
