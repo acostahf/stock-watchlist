@@ -8,12 +8,9 @@ module.exports = {
 
 };
 function index(req, res, next) {
-    let modelQuery = req.query.name
-        ? { name: new RegExp(req.query.name, "i") }
-        : {};
     // Default to sorting by name
     let sortKey = req.query.sort || "name";
-    Trader.find(modelQuery)
+    Trader.find({ name: req.user.name })
         .sort(sortKey)
         .exec(function (err, traders) {
             if (err) return next(err);
@@ -40,7 +37,6 @@ function create(req, res, next) {
 }
 function delProfits(req, res, next) {
     Trader.findOne({ 'profits._id': req.params.id }, function (err, trader) {
-        console.log('fire')
         trader.profits.id(req.params.id).remove();
         trader.save(function (err) {
             res.redirect("/profits");

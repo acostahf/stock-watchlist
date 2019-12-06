@@ -17,10 +17,10 @@
         <% traders.forEach(function(trader) { %>
         <% trader.profits.forEach(function(u) { %>
         <tr>
-            <td><%= u.profits %></td>
             <td><%= u.week %></td>
+            <td><%= u.profits %></td>
 
-            <td><a href="">DETAILS</a></td>
+
 
             <td>
                 <% if (trader._id.equals(user && user._id)) { %>
