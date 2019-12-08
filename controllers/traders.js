@@ -5,12 +5,13 @@ module.exports = {
   addStock,
   delStock,
   show,
-  update
+  // update,
+  // edit
 
 };
 
 function index(req, res, next) {
-  console.log(req.query);
+
   // Make the query object to use with Student.find based up
   // the user has submitted the search form or now
   let modelQuery = req.query.name
@@ -52,29 +53,37 @@ function delStock(req, res, next) {
 }
 
 function show(req, res) {
-
-  let sortKey = req.query.sort || "name";
-  Trader.find({ name: req.user.name })
-    .sort(sortKey)
-    .exec(function (err, traders) {
-      if (err) return next(err);
-      Trader.findById(req.params.id, function (err, stock) {
-        res.render("traders/show", {
-          traders,
-          stock,
-          user: req.user,
-          name: req.query.name, stock
-        });
-      })
-    })
+  Trader.findOne({ _id: req.user._id })
+    .exec((err, trader) => {
+      let stocks = trader.stocks;
+      stocks.forEach(function (h) {
+        let correctStock = "";
+        if (h._id == req.params.id) {
+          correctStock = h;
+          res.render("traders/show", {
+            trader,
+            correctStock,
+            user: req.user,
+            name: req.query.name
+          });
+        }
+      });
+    });
+  // });
 }
+// function edit(req, res, next) {
+//  Trader.findById(req.params.id, function (err, stoc) {
+//   Trader.forEach(function (trader) {
+//     trader.stocks.forEach(function (stock) {
+//       console.log(stock)
+//     })
+//   })
+// }
+// function update(req, res, next) {
+//   let traderStock = Trader.stocks
+//   traderStock.findById(req.params.id, function (err, stoc) {
+//     res.redirect('/traders/show', {
 
-
-function update(req, res, next) {
-  let traderStock = Trader.stocks
-  traderStock.findById(req.params.id, function (err, stoc) {
-    res.redirect('/traders/show', {
-
-    })
-  })
-}
+//     })
+//   })
+// }
