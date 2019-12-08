@@ -1,13 +1,13 @@
 body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgb(124, 99, 99);
+  background-color: rgba(21, 241, 230, 0.966);
   margin: 0px;
 }
 
 a {
   display: flex;
-  color: #00b7ff;
+  color: #ff8800;
   float: right;
   justify-content: center;
 }
@@ -20,7 +20,7 @@ nav {
 h1 {
   display: flex;
   margin: 0%;
-  color: #00b7ff;
+  color: #ff8800;
   float: left;
   justify-content: center;
 }
@@ -29,4 +29,9 @@ form {
   display: flex;
   /* background-color: grey; */
   justify-content: center;
+}
+
+.nav-item2 {
+
+  font-size: 20px;
 }
