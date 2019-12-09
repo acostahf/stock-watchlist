@@ -6,7 +6,6 @@ module.exports = {
   delStock,
   show,
   update
-  // edit
 };
 
 function index(req, res, next) {
@@ -65,20 +64,8 @@ function show(req, res) {
       }
     });
   });
-  // });
 }
-// function edit(req, res, next) {
-//  Trader.findById(req.params.id, function (err, stoc) {
-//   Trader.forEach(function (trader) {
-//     trader.stocks.forEach(function (stock) {
-//       console.log(stock)
-//     })
-//   })
-// }
 
-//this function updates by getting the trader id and looping through the many stocks the user
-//has to get the correctStock and req.body the input
-//to save to the stocks
 function update(req, res, next) {
   Trader.findOne({ "stocks._id": req.params.id }, function(err, trader) {
     trader.stocks.id(req.params.id);
