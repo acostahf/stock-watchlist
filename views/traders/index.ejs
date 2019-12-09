@@ -14,7 +14,7 @@
     <input type="number" name="price" placeholder="price" />
     <input type="number" name="buy" placeholder="buy" />
     <input type="number" name="sell" placeholder="sell" />
-    <input type="submit" value="Add Stock" />
+    <input type="submit" value="Add Stock" class="btn btn-success btn-sm" />
   </form>
   <tbody>
     <% traders.forEach(function(trader) { %>
@@ -29,9 +29,9 @@
       <td>
         <a>
           <% if (trader._id.equals(user && user._id)) { %>
-          <a href="/traders/<%= u._id %>/stocks">My stocks</a>
+          <a href="/traders/<%= u._id %>/stocks">Details</a>
           <form action="/stocks/<%= u._id %>?_method=DELETE" method="POST" class="secondary-content">
-            <button type="submit">X</button>
+            <button type="submit" class="btn btn-danger btn-sm">x</button>
           </form>
           <% } %>
 
