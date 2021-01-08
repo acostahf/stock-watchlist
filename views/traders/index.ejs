@@ -1,4 +1,46 @@
 <%- include('../partials/header') %>
+<div class="container-fluid" >
+  
+  
+  <!-- <form d="add-stock-form" method="POST" action="/stocks">
+    <input type="text" name="symbol" placeholder="symbol" />
+    <input type="number" name="price" placeholder="price" />
+    <input type="number" name="buy" placeholder="buy" />
+    <input type="number" name="sell" placeholder="sell" />
+    <input type="submit" value="Add Trade" class="btn btn-success btn-sm" />
+  </form> -->
+  
+  <div class="row" >
+    <div class="col-4">
+      <div class="card text-white bg-dark mb-3">
+      <form d="add-stock-form" method="POST" action="/stocks">
+         <div class="input-group mb-3 mt-3 col-sm">
+           <input type="text"  name="symbol" class="form-control " placeholder="Symbol"  required>
+           
+          </div>
+          <div class="input-group mb-3 col-sm">
+           <input type="text"  name="price" class="form-control" placeholder="0" required>
+          </div>
+           <div class="input-group mb-3 col-sm">
+           <input type="text"  name="buy" class="form-control" placeholder="0" required>
+          </div>
+           <div class="input-group mb-3 col-sm">
+           <input type="text"  name="sell" class="form-control" placeholder="0" required>
+          </div>
+          <!-- <div class=" mb-3 "> -->
+           <!-- <div class="d-grid gap-2 c w-auto"> -->
+             
+             <button type="submit" value="submit" class="btn btn-success gap-2 w-75 mb-3 mx-5">Submit</button>
+            <!-- </div> -->
+          <!-- </div> -->
+          
+        </form>
+      </div>
+      </div>
+    
+    
+
+<div class="col-8">
 <table class="table table-striped table-dark" id="list">
   <thead>
     <tr>
@@ -9,13 +51,7 @@
       <th>sell</th>
     </tr>
   </thead>
-  <form d="add-stock-form" method="POST" action="/stocks">
-    <input type="text" name="symbol" placeholder="symbol" />
-    <input type="number" name="price" placeholder="price" />
-    <input type="number" name="buy" placeholder="buy" />
-    <input type="number" name="sell" placeholder="sell" />
-    <input type="submit" value="Add Stock" class="btn btn-success btn-sm" />
-  </form>
+
   <tbody>
     <% traders.forEach(function(trader) { %>
     <% trader.stocks.forEach(function(u) { %>
@@ -28,7 +64,7 @@
 
       <td>
         <a>
-          <% if (trader._id.equals(user && user._id)) { %>
+      <% if (trader._id.equals(user && user._id)) { %>
           <a href="/traders/<%= u._id %>/stocks">Details</a>
           <form action="/stocks/<%= u._id %>?_method=DELETE" method="POST" class="secondary-content">
             <button type="submit" class="btn btn-danger btn-sm">x</button>
@@ -43,4 +79,7 @@
   </tbody>
 </table>
 
+</div>
+</div>
+</div>
 <%- include('../partials/footer') %>
