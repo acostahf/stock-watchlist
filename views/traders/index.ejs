@@ -19,7 +19,7 @@
            
           </div>
           <div class="input-group mb-3 col-sm">
-           <input type="text"  name="price" class="form-control" placeholder="0" required>
+           <input type="text"  name="shares" class="form-control" placeholder="0" required>
           </div>
            <div class="input-group mb-3 col-sm">
            <input type="text"  name="buy" class="form-control" placeholder="0" required>
@@ -46,9 +46,9 @@
     <tr>
       <th>Trader</th>
       <th>Stock</th>
-      <th>price</th>
-      <th>buy</th>
-      <th>sell</th>
+      <th># of Shares</th>
+      <th>Buy Price</th>
+      <th>Sell Price</th>
     </tr>
   </thead>
 
@@ -58,21 +58,27 @@
     <tr>
       <td><%= trader.name %></td>
       <td><%= u.symbol %></td>
-      <td><%= u.price %></td>
+      <td><%= u.shares %></td>
       <td><%= u.buy %></td>
       <td><%= u.sell %></td>
 
-      <td>
-        <a>
+      
+       
       <% if (trader._id.equals(user && user._id)) { %>
-          <a href="/traders/<%= u._id %>/stocks">Details</a>
+
+
+        <td><a href="/traders/<%= u._id %>/stocks">Details</a></td>
+        <td>
           <form action="/stocks/<%= u._id %>?_method=DELETE" method="POST" class="secondary-content">
             <button type="submit" class="btn btn-danger btn-sm">x</button>
           </form>
+        </td>
+
+
           <% } %>
 
-          </form>
-      </td>
+        
+      
     </tr>
     <% }); %>
     <% }); %>

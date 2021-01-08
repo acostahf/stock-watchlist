@@ -21,7 +21,7 @@ var profitSchema = new Schema(
 var stockSchema = new Schema(
   {
     symbol: { type: String, default: 'BA' },
-    price: { type: Number, default: 5 },
+    shares: { type: Number, default: 5 },
     buy: { type: Number, default: 5 },
     sell: { type: Number, default: 5 },
     comments: [commentSchema]

@@ -73,7 +73,7 @@ function update(req, res, next) {
     multStock.forEach(function(correctStock) {
       if (correctStock._id == req.params.id) {
         correctStock.symbol = req.body.symbol;
-        correctStock.price = req.body.price;
+        correctStock.shares = req.body.shares;
         correctStock.buy = req.body.buy;
         correctStock.sell = req.body.sell;
         trader.save(function(err) {
