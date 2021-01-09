@@ -10,8 +10,9 @@
     <input type="submit" value="Add Trade" class="btn btn-success btn-sm" />
   </form> -->
 
-  <div class="card bg-dark my-5">
+  <div class="card bg-dark text-white my-5">
     <div class="card-body">
+      <h5 class="card-title">Enter Trade</h5>
       <form d="add-stock-form" method="POST" action="/stocks">
         <div class="mb-3">
           <input
@@ -27,7 +28,7 @@
             type="text"
             name="shares"
             class="form-control"
-            placeholder="0"
+            placeholder="Shares"
             required
           />
         </div>
@@ -36,7 +37,7 @@
             type="text"
             name="buy"
             class="form-control"
-            placeholder="0"
+            placeholder="Buy Price"
             required
           />
         </div>
@@ -45,18 +46,14 @@
             type="text"
             name="sell"
             class="form-control"
-            placeholder="0"
+            placeholder="Sell Price"
             required
           />
         </div>
         <!-- <div class=" mb-3 "> -->
         <!-- <div class="d-grid gap-2 c w-auto"> -->
 
-        <button
-          type="submit"
-          value="submit"
-          class="btn btn-info gap-2 w-75 mb-3"
-        >
+        <button type="submit" value="submit" class="btn btn-info w-100">
           Submit
         </button>
         <!-- </div> -->
