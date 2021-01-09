@@ -1,59 +1,66 @@
 <%- include('../partials/header') %>
 
-
 <div
-  class="container d-flex flex-row justify-content-around align-items-center flex-wrap h-100 p-30"
+  class="container d-flex flex-column justify-content-evenly align-content-end d-flex align-items-center h-100 p-30"
 >
-  <div class="card bg-dark text-white my-5">
+  <div class="card bg-dark text-white mb-3">
     <div class="card-body">
-      <h5 class="card-title">Enter Trade</h5>
+      <h5 class="card-title">Enter P/L</h5>
       <form d="add-profit-form" method="POST" action="/profits">
         <div class="mb-3">
-            <input type="text" name="week" placeholder="week" class="form-control" required/>
-            </div>
-            <div class="mb-3">
-
-                <input type="number" name="profits" placeholder="profits" class="form-control" required/>
-            </div>
-            <div class="mb-3">
-                
-                <input type="submit" value="Add Profit" class="btn btn-info w-100" />
-            </div>
-
-          
+          <input
+            type="text"
+            name="week"
+            placeholder="week"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="number"
+            name="profits"
+            placeholder="P/L"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <input type="submit" value="Add " class="btn btn-info w-100" />
+        </div>
       </form>
     </div>
   </div>
 
-  <table class="table table-striped table-dark w-50" id="list">
+  <table class="table table-striped table-dark mb-3" id="list">
     <thead>
       <tr>
         <th>Week</th>
         <th>P/L</th>
+        <th></th>
       </tr>
     </thead>
 
     <tbody>
-        <% traders.forEach(function(trader) { %>
-        <% trader.profits.forEach(function(u) { %>
-        <tr>
-            <td><%= u.week %></td>
-            <td><%= u.profits %></td>
+      <% traders.forEach(function(trader) { %> <%
+      trader.profits.forEach(function(u) { %>
+      <tr>
+        <td><%= u.week %></td>
+        <td><%= u.profits %></td>
 
-
-
-            <td>
-                <% if (trader._id.equals(user && user._id)) { %>
-                <form action="/profits/<%= u._id %>?_method=DELETE" method="POST" class="secondary-content">
-                    <button type="submit" class="btn btn-danger btn-sm">x</button>
-                </form>
-                <% } %>
-
-                </form>
-            </td>
-        </tr>
-        <% }); %>
-        <% }); %>
+        <td>
+          <% if (trader._id.equals(user && user._id)) { %>
+          <form
+            action="/profits/<%= u._id %>?_method=DELETE"
+            method="POST"
+            class="secondary-content"
+          >
+            <button type="submit" class="btn btn-danger btn-sm">x</button>
+          </form>
+          <% } %>
+        </td>
+      </tr>
+      <% }); %> <% }); %>
     </tbody>
   </table>
 </div>

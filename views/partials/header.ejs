@@ -29,51 +29,58 @@
 
   <body>
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-      <div class="container">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarTogglerDemo03"
-          aria-controls="navbarTogglerDemo03"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <a class="navbar-brand" href="/traders">
-            <img
-              src="https://i.ibb.co/m6hvG4q/6e587310-7229-416d-b060-76b7a12ce961-200x200.png"
-              alt="Stock Watch"
-              border="0"
-              height="100"
-              width="100"
-            />
-          </a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="/traders"
-                >Home <span class="sr-only"></span
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/profits">Profits</a>
-            </li>
-          </ul>
-          <div></div>
+      <div
+        class="collapse navbar-collapse d-flex flex-row justify-content-around"
+        id="navbarToggleExternalContent"
+      >
+        <a class="navbar-brand" href="/traders">
+          <img
+            src="https://i.ibb.co/m6hvG4q/6e587310-7229-416d-b060-76b7a12ce961-200x200.png"
+            alt="Stock Watch"
+            border="0"
+            height="80"
+            width="80"
+          />
+        </a>
+
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link h4" href="/traders">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link h4" href="/profits">Profits</a>
+          </li>
 
           <% if (user) { %>
-          <a href="/logout">
-            <button type="button" class="btn btn-danger">Sign out</button>
-          </a>
+          <li>
+            <a href="/logout">
+              <button type="button" class="btn btn-danger">Sign out</button>
+            </a>
+          </li>
           <% } else { %>
-          <a href="/auth/google">
-            <button type="button" class="btn btn-info">Login</button>
-          </a>
+          <li>
+            <a href="/auth/google" class="nav-item">
+              <button type="button" class="btn btn-info">Login</button>
+            </a>
+          </li>
           <% } %>
-        </div>
+        </ul>
       </div>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
     </nav>
   </body>
 </html>
