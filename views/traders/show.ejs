@@ -9,36 +9,35 @@
     </tr>
   </thead>
 
-  <form id="update-form" class="update-form" action="/traders/<%= correctStock._id %>/stocks/?_method=PUT" method="POST">
-  <tbody>
-    <td>
-      <%= correctStock.symbol%>
-        <input type="text" name="symbol" placeholder="symbol" id="showInput"/>
-    
-    </td>
-    <td>
-      <%= correctStock.shares %>
-      <input type="text" name="price" placeholder="price" id="showInput"/>
-    
-    </td>
-    <td>
-      <%= correctStock.buy%>
-      <input type="text" name="buy" placeholder="buy"id="showInput" />
-    
-    </td>
-    <td>
-      <%= correctStock.sell %>
-      <input type="text" name="sell" placeholder="sell" id="showInput"/>
-    
-    </td>
-  
-    <td><input type="submit" value="Update" class="btn btn-primary btn-sm"/></td>
+  <form
+    id="update-form"
+    class="update-form"
+    action="/traders/<%= correctStock._id %>/stocks/?_method=PUT"
+    method="POST"
+  >
+    <tbody>
+      <td>
+        <%= correctStock.symbol%>
+        <input type="text" name="symbol" placeholder="symbol" id="showInput" />
+      </td>
+      <td>
+        <%= correctStock.shares %>
+        <input type="text" name="price" placeholder="price" id="showInput" />
+      </td>
+      <td>
+        <%= correctStock.buy%>
+        <input type="text" name="buy" placeholder="buy" id="showInput" />
+      </td>
+      <td>
+        <%= correctStock.sell %>
+        <input type="text" name="sell" placeholder="sell" id="showInput" />
+      </td>
 
-    </form>
-    </td>
-    </tr>
-
-
-  </tbody>
+      <td>
+        <input type="submit" value="Update" class="btn btn-primary btn-sm" />
+      </td>
+    </tbody>
+  </form>
 
   <%- include('../partials/footer') %>
+</table>
